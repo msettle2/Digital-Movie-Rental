@@ -1,0 +1,32 @@
+<%- include('../partials/header.ejs')%>
+    <main>
+        <div class="content">
+                    <section id="projects">
+                        <section class="item-wrapper">
+                            <%if(items.length){%>
+                                <%items.forEach(item=>{%>
+                                    <%if(item.active == true){%>
+                                    <!-- <p><%=item.title%></p>
+                                    <p><%=item.condition%></p>
+                                    <p class="medium"><%=item.medium%></p>
+                                    <p class="price"><%=item.price%></p>
+                                    <p class="offers"><%=item.totalOffers%> offers</p> -->
+                                    <!-- <img class="img" src="<%=item.image%>" alt="Captain Clean Movie Poster"> -->
+                                <a href="/items/<%=item.id%>"><div class="item">
+                                    <img class="img" src="<%=item.image%>" alt="Captain Clean Movie Poster">
+                                    <p class="title"><%=item.title%></p>
+                                    <p class="condition"><%=item.condition%></p>
+                                    <p class="medium"><%=item.medium%></p>
+                                    <p class="price"><%=item.price%></p>
+                                    <p class="offers"><%=item.totalOffers%> offers</p>
+                                </div></a>
+                                <%}%>
+                            <%});
+                    }else{%>
+                        <p class="noitems">There are no items to display.</p>
+                    <%}%>
+                    </section>
+            </section>
+        </div>
+    </main>
+<%- include('../partials/footer.ejs')%>

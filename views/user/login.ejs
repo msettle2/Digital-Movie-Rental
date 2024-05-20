@@ -1,0 +1,27 @@
+
+<%- include('../partials/header.ejs')%>
+<main>
+    <form action = '/users/login' method = 'POST' class="user-form">
+        <section class = "explanation">
+            <h2>Please Login to your account</h2>
+            <p>Johnson's Movie Rentals is the worlds first family run fully digital market place for movie rentals</p>
+        </section>
+
+        <section class="sell">
+            <div>
+                <label for="email">Email Address</label>
+                <input type="email" class="input" id="email" name="email" required>
+            </div>
+            
+            <div>
+                <label for="password">Password</label>
+            <input type="password" class="input" id="password" name="password" required>
+            </div>
+            
+            <input type="submit" class="submit" value="Login">
+        </section>
+    </form>
+</main>
+<%- include('../partials/footer.ejs')%>
+
+

@@ -1,0 +1,91 @@
+<%- include('../partials/header.ejs')%>
+<main class="profile-container">
+    <%if(items.length){%>
+            <section class="profile-item-container">
+                        <section class = "explanation">
+                            <h2 class="profile-title">Welcome, <%=user.firstName%> <%=user.lastName%></h2>
+                            <p class="profile-title">You have listed the following items for sale</p>
+                        </section>
+                <section class="sell-container">
+                        <%items.forEach(item=>{%>
+                            
+                            <section class="sell2">
+                                <div>
+                                    <a href="/items/<%=item.id%>">
+                                        <label for="title">Item: <%=item.title%></label>
+                                    </a>
+                                </div>
+                                <div>
+                                    <%if(item.active==true){%>
+                                        <p class="active">Status: active</p>
+                                    <%}else{%>
+                                        <p class="active">Status: inactive</p>
+                                    <%}%>
+                                </div>
+                                <form>
+                                    <button type = "submit" class="submit" formmethod = "GET" formaction = "/items/<%=item.id%>/edit">Edit</button>
+                                    <button type = "submit" class="submit" formmethod = "POST" formaction = "/items/<%=item.id%>?_method=DELETE">Delete</button>
+                                    <%if(item.totalOffers > 0){%>
+                                        <button type = "submit" class="submit" formmethod = "GET" formaction = "/items/<%=item.id%>/offers">Offers</button>
+                                    <%}
+                                    else{%>
+                                        <button type = "submit" class="submit-disabled" formmethod = "GET" formaction = "">Offers</button>
+                                    <%}%>
+                                </form>
+                            </section>
+                    <%});%>
+                </section>
+            </section>
+    </div>
+        <%}else{%>
+            <h2 class="profile-title">Welcome, <%=user.firstName%> <%=user.lastName%></h2>
+            <p class="noitems profile-title">You have not listed any items</p>
+        <%}%>
+    </div>
+
+    <%if(offers.length){%>
+    <section class="profile-offer-container">
+            <section class = "explanation">
+                <h3 class="profile-title">You have made the following offers:</h3>
+            </section>
+            <section class="offer-container">
+
+                <section class="offer1">
+                    <div>
+                        <p>Item</p>
+                    </div>
+                    <div>
+                        <p>Status</p>
+                    </div>
+                    <form>
+                        Amount
+                    </form>
+                </section>
+                
+                <%offers.forEach(offer=>{%>
+                    
+                    <section class="offer">
+                        <div>
+                            <%if(offer.item){%>
+                                <a href="/items/<%=offer.item.id%>">
+                                    <p class="offer-title"><%=offer.item.title%></p>
+                                </a>
+                            <%}%>
+                        </div>
+                        <div>
+                            <p class="active"><%=offer.status%></p>
+                        </div>
+                        <div>
+                            <p class="active">$<%=offer.amount%></p>
+                        </div>
+                    </section>
+            <%});%>
+            </section>
+    </section>
+    </div>
+    <%}else{%>
+        <h3 class="profile-title">You have not placed any offers</h3>
+    <%}%>
+    </div>
+</main>
+    <%- include('../partials/footer.ejs')%>

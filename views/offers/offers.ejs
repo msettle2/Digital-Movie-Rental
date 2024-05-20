@@ -1,0 +1,65 @@
+<%- include('../partials/header.ejs')%>
+<main>
+    <p>Test</p>
+    <!-- <p><%=offers%></p>
+    <p><%=items%></p> -->
+
+    <%if(offers.length){%>
+        <section class="profile-offer-container">
+                <%if(offers.length){%>
+                <section class = "explanation">
+                    <h3 class="profile-title">Offers recieved for: <%=items.title%></h3>
+                </section>
+                <section class="offer-container">
+    
+                    <section class="offer1">
+                        <div>
+                            <p>Buyer</p>
+                        </div>
+                        <div>
+                            <p>Amount</p>
+                        </div>
+                        <div>
+                            <p>Action</p>
+                        </div>
+                    </section>
+                    
+                    <%offers.forEach(offer=>{%>
+                        
+                        <section class="offer">
+                            <div>
+                                <a href="">
+                                    <!-- TODO: ASK HOW TO CALL THE ITEM INFO FROM OFFER.ITEM-->
+                                    <p class="offer-title"><%=offer.user.firstName + ' ' + offer.user.lastName%></p>
+                                </a>
+                            </div>
+                            <div>
+                                <p class="active">$<%=offer.amount%></p>
+                                <!-- <p><%=offer.id%></p>
+                                <p><%=items.id%></p> -->
+                            </div>
+                            <div>
+                                <%if(items.active == true){%>
+                                <!-- NOTE: THIS MIGHT BE HOW TO FIX THE BUTTON IN ROOMMATE-SYNC -->
+                                <form>
+                                    <button type = "submit" class="submit" formmethod = "POST" formaction = "/items/<%=items.id%>/offers/<%=offer.id%>">Accept</button>
+                                </form>
+                                <%}else{%>
+                                    <p><%=offer.status%></p>
+                                <%}%>
+                            </div>
+                        </section>
+                <%});%>
+                </section>
+        <%}else{%>
+            <h2 class="profile-title">Welcome, <%=user.firstName%></h2>
+            <p class="noitems profile-title">There are no items to display.</p>
+        <%}%>
+        </section>
+        </div>
+        <%}else{%>
+            <p>You have not placed any offers</p>
+        <%}%>
+        </div>
+
+</main>

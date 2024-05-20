@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Patua+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d2c635c0b4.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div>
+            <a href="/"><img src="/images/Johnsons-movie-rentals-logos_transparent2.png" alt="Website Logo"></a>
+        </div>
+        <div>
+            <form method="GET" action="/items">
+                <input type="text" placeholder="    Search.." name="search">
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/items">Browse</a></li>
+                <li><a href="/items/new">Sell</a></li>
+                <%if(!user){%>
+                    <li><a href="/users/new">Sign Up</a></li>
+                    <li><a href="/users/login">Login</a></li>
+                <%}else{%>
+                    <li><a href="/users/profile">Profile</a></li>
+                    <li><a href="/users/logout">Logout</a></li>
+                <%}%>
+                
+                
+            </ul>
+        </nav>
+        
+    </header>
+    <%if(errorMessages.length > 0){
+        errorMessages.forEach(message=>{%>
+            <div class="error"><%=message%></div>
+        <%});
+    }%>
+    
+    <%if(successMessages.length > 0){
+        successMessages.forEach(message=>{%>
+            <div class="success"><%=message%></div>
+        <%});
+    }%>

@@ -1,0 +1,82 @@
+<%- include('../partials/header.ejs')%>
+    <main><!--enctype="multipart/form-data"-->
+        <form method="POST" action="/items/<%= item.id%>?_method=PUT" enctype="multipart/form-data">
+            <section class = "explanation">
+                <h2>Edit Your Movie Listing Here</h2>
+                <p>Johnson's Movie Rentals is the worlds first family run fully digital market place for movie rentals</p>
+            </section>
+            <section class="sell">
+                <label for="condition">Condition</label> 
+                    <select name="condition" id="condition" name = "condition" required> 
+                        <!-- <option disabled selected value> -- select an option -- </option> -->
+                        <option value="New"
+                        <% if(item.condition === "New"){ %>
+                        selected <% } %>>New</option>
+                        
+                        <option value="Mint"
+                        <% if(item.condition === "Mint"){%>
+                        selected<% } %>> Mint</option>
+
+                        <option value="Used"
+                        <% if(item.condition === "Used"){%>
+                        selected<% } %>> Used</option>
+
+                        <option value="Fine"
+                        <% if(item.condition === "Fine"){%>
+                        selected<% } %>> Fine</option>
+
+                        <option value="Poor"
+                        <% if(item.condition === "Poor"){%>
+                        selected<% } %>> Poor</option>
+
+                            
+                    </select>
+                <!-- title -->
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" placeholder=" Please enter title" id="title" name="title" value="<%=item.title%>" required>
+                </div>
+                <!-- seller -->
+                <!-- <div>
+                    <label for="seller">Seller</label>
+                    <input type="text" placeholder=" Please enter seller" id="seller" name="seller" value="<%=item.seller%>" required>
+                </div> -->
+                <!-- price -->
+                <div>
+                    <label for="price">Price</label>
+                    <input type="number" step="0.01" placeholder=" Please enter price" id="price" name="price" value="<%=item.price%>" required>
+                </div>
+                <!-- medium -->
+                <label for="medium">Format</label> 
+                    <select name="medium" id="medium" required> 
+
+                        <option value="DVD"
+                        <% if(item.medium === "DVD"){ %>
+                        selected<% } %>> DVD</option>
+                        
+                        <option value="VHS"
+                        <% if(item.medium === "VHS"){%>
+                        selected<% } %>> VHS</option>
+
+                        <option value="Lazer-Disk"
+                        <% if(item.medium === "Lazer-Disk"){%>
+                        selected<% } %>> Lazer-Disk</option>
+
+                    </select>
+                <!-- details -->
+                <div class = "span">
+                    <label for="message">Details</label>
+                    <textarea id="message" placeholder=" Please enter details" name="details" value="<%=item.details%>" cols="20" rows="2" required minlength="10"><%=item.details%></textarea>
+                </div>
+                <!-- image -->
+                <!-- TODO: ask how to give file upload a default value -->
+                <div>
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" value="<%=item.image%>" required>
+                </div>
+                <!-- submit btn -->
+                <input type="submit" value="Submit" class="submit">
+            </section>
+        </form>
+    </main>
+<%- include('../partials/footer.ejs')%>

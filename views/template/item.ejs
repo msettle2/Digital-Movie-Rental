@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs')%>
+    <main>
+        <div class="main-container">
+            <!-- Added ../ to make image work -->
+            <img src="../<%=item.image%>" alt="item image">
+            <article class="artical-container">
+                <h2><%=item.title%></h2>
+                <p>Condition: <%=item.condition%></p>
+                <div class="price-container">
+                    <p>Price: <%=item.price%></p>
+                    <p>| <%=item.totalOffers%> Offers</p>
+                </div>
+                <p>Format: <%=item.medium%></p>
+                <p>Seller: <%=item.seller.firstName + ' ' + item.seller.lastName%></p>             
+            
+                <p>Description: <%=item.details%></p>
+                <%if(item.active == true){%>
+
+                    <form method='POST' action="/items/<%=item.id%>/offers">
+                        <div>
+                            <input type="number" step="0.01" placeholder=" Please enter amount" id="amount" name="amount" required>
+                        </div>
+                        <input type="submit" value="Make an Offer" class="submit">
+                    </form>
+
+                <%if(item.totalOffers > 0){%>
+                <p>Current Highest Bid: $<%=item.highestOffer%></p>
+                <%}%>
+                <%}else{%>
+                    <p class="notforsale">Unfortunatly, this item is longer longer for sale</p>
+                <%}%>
+<!--                <form>
+                        <button type = "submit" formmethod = "GET" formaction = "/items/<%=item.id%>/edit">Edit</button>
+                        <button type = "submit" formmethod = "POST" formaction = "/items/<%=item.id%>?_method=DELETE">Delete</button>
+                    </form> -->
+                
+            </article>
+        </div>
+    </main>
+<%- include('../partials/footer.ejs')%>

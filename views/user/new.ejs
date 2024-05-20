@@ -1,0 +1,29 @@
+
+<%- include('../partials/header.ejs')%>
+<main>
+        <form action = '/users' method = 'POST' class="user-form">
+                <section class = "explanation">
+                        <h2>Please Create an account</h2>
+                        <p>Enter your credentials on the right, you will not be able to change them later</p>
+                </section>
+
+                <section class="sell">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="input" id="firstName" name="firstName" required>
+                        
+                        <label for="lastName">Last Name</label></td>
+                        <input type="text" class="input" id="lastName" name="lastName" required></td>
+                        
+                        <label for="email">Email Address</label>
+                        <input type="email" class="input" id="email" name="email">
+                        
+                        <label for="password">Password</label>
+                        <input type="password" class="input" id="password" name="password" minlength="8" maxlength="64" required>
+
+                        <input type="submit" class="submit" value="Sign Up">
+                </section>
+        </form>
+</main>
+<%- include('../partials/footer.ejs')%>
+
+
